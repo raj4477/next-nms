@@ -1,7 +1,93 @@
-.ln{
-    height: 100px;
-    width: 100px;
-    color: brown;
-    background-color: darkgreen;
-    transition: all 2s;
+
+  .p{
+    display: flex;
+    margin-bottom: 15px;
+  }
+  .ln{
+    /* margin-top: 10px; */
+    height: 80px;
+    width: 15px;
+    background-color: #46a049;
+    transition: height 0.5s ease-in;
+    /* display: inline-block; */
 }
+.ln1{
+      margin-top: 25px;
+    height: 115px;
+    width: 15px;
+    background-color: yellow;
+  }
+  .c2{
+    margin-left: 15px;
+    /* display: inline-block; */
+  }
+  .pad{
+    margin-bottom: 15px;
+    margin-right: 4px;
+  }
+  /* h2 {
+    text-align: center;
+  } */
+  
+  #noticeForm {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .inputButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .inputButton:hover {
+    background-color: #46a049;
+  }
+
+  .note{
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid gray;
+    border-radius: 3px;
+    resize: vertical;
+  }
+  
+  /* label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="checkbox"],
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #46a049;
+  }
+   */
