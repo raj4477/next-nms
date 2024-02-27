@@ -29,11 +29,11 @@ const [info, setInfo] = useState([]);
 
 let infoHelper = []
 let d =[];
-useEffect(()=>{
-  console.log("useEffect-->");
-  console.log(d);
-  console.log(items);
-},[])
+// useEffect(()=>{
+//   console.log("useEffect-->");
+//   console.log(d);
+//   console.log(items);
+// },[])
 const readExcel = (file) => {
     // const promise = new Promise((resolve, reject) => {
         const fileReader = new FileReader();

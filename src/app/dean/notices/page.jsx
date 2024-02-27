@@ -1,23 +1,31 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import * as style from './style.module.css'
+import { getCookie } from 'cookies-next';
 
 const DataComponent = () => {
     const [data, setData] = useState([])
-    useEffect(
-        async () => {
-            try {
-                const response = await fetch("http://localhost/api//fetchnotice/ritik_11202584@mmumullana.org")
-                const result = await response.json()
-                setData(result)
-                console.log(result)
-                console.log(data);
-            }
-            catch (err) {
-                console.log(err);
-            }
+    const getNotice = async () => {
+        let userEmail = getCookie('email')
+        try {
+            const response = await fetch("http://localhost/api/fetchnotice/"+userEmail, {
+                method: 'GET',
+                headers: {
+                  'Authorization': 'Bearer ' + getCookie('token')
+                }
+              })
+            const result = await response.json()
+            setData(result)
+            console.log(result)
+            console.log(data);
         }
-        , [])
+        catch (err) {
+            console.log(err);
+        }
+    }
+    useEffect(()=>{
+        getNotice()
+    }, [])
     function comp(data) {
         return (<div className={style.datacontainer}>
             <div className={style.data}>

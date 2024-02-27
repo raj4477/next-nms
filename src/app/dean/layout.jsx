@@ -2,30 +2,34 @@
 import React, { useEffect, useState } from 'react'
 import { getCookie } from 'cookies-next'
 import DeanNavComponent from '../components/Dean-Nav.component'
+import Script from 'next/script'
 
 
 const layout = ({children}) => {
   const [userLevel, setUserLevel] = useState(null)
-  useEffect(async ()=>{
-    if(!getCookie('token')){
+  const auth = async ()=> {
+    if (!getCookie('token')) {
       window.location.href = '/'
+
     }
     const response = await fetch('http://localhost:80/auth/authorize', {
-      method: 'GET',
+      method: 'POST',
       headers: {
-        'Authorization' : 'Bearer ' + getCookie('token')
+        'Authorization': 'Bearer ' + getCookie('token')
       },
-      body: JSON.stringify({
-        
-      }),
-    });
+      body: JSON.stringify({}),
+    })
     const result = await response.json()
     setUserLevel(result.level)
-    if(result.level != 0){
+    // alert(result.level)
+    if (result.level !== 1) {
       window.location.href = '/error'
     }
-  })
+  }
+  useEffect( ()=>{
+     auth()
 
+  })
   return (<>
     {userLevel !=1 ? 
     
@@ -41,8 +45,9 @@ const layout = ({children}) => {
     <body> */}
     <DeanNavComponent suppressHydrationWarning={true}/>
     <>{children}</>
-    <script src='/flow.js'></script>
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <Script type="text/javascript" src="/flow.js" />
+    {/* <script src='/flow.js'></script>
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script> */}
     {/* </body>
     </html> */}
     </>

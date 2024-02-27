@@ -1,13 +1,18 @@
 'use client'
-import { hasCookie } from 'cookies-next'
+import { getCookie, hasCookie } from 'cookies-next'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const HomePage_Component = () => {
-  if (hasCookie('email')) {
-    window.location.href = '/admin'
+  const router = useRouter()
+  if (hasCookie('mode')) {
+    let pth = '/' + getCookie('mode')
+    router.push(pth)
+    // window.location.href = '/admin'
   }
   else {
-    window.location.href = '/login'
+    router.push('/login')
+    // window.location.href = '/login'
   }
   return (
     <>

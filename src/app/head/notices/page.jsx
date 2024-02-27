@@ -4,18 +4,21 @@ import * as style from './style.module.css'
 
 const DataComponent = () => {
     const [data, setData] = useState([])
+    const getNotice = async () => {
+        try {
+            const response = await fetch("http://localhost/api//fetchnotice/ritik_11202584@mmumullana.org")
+            const result = await response.json()
+            setData(result)
+            console.log(result)
+            console.log(data);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
     useEffect(
-        async () => {
-            try {
-                const response = await fetch("http://localhost/api//fetchnotice/ritik_11202584@mmumullana.org")
-                const result = await response.json()
-                setData(result)
-                console.log(result)
-                console.log(data);
-            }
-            catch (err) {
-                console.log(err);
-            }
+        ()=>{
+            getNotice()
         }
         , [])
     function comp(data) {

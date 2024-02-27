@@ -2,11 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import * as style from "./style.module.css"
 import { getCookie } from 'cookies-next'
+import { useCookies } from 'next-client-cookies'
 const engineeringOption = [
-  {
-    label : "Principals",
-    value : "dean"
-  },
   {
     label : "HoDs",
     value : "head"
@@ -22,10 +19,6 @@ const engineeringOption = [
 ]
 const hostelOption = [
   {
-    label : "Head Warden",
-    value : "dean"
-  },
-  {
     label : "Hostel's Wardens",
     value : "warden"
   },
@@ -40,10 +33,6 @@ const hostelOption = [
 ]
 const allOption = [
   {
-    label : "All Deans",
-    value : "dean"
-  },
-  {
     label : "All Heads",
     value : "head"
   },
@@ -57,7 +46,7 @@ const allOption = [
   },
 ]
 const page = () => {
-    const [height, setHeight] = useState(20);
+    const [height, setHeight] = useState(50);
     const [note, setNote] = useState("");
     const [heading, setHeading] = useState("");
     const [department, setDepartement] = useState("");
@@ -65,10 +54,15 @@ const page = () => {
     const [options, setOption] = useState([]);
     const [file , setFile] = useState(null);
     const [imagefile , setImageFile] = useState("");
+    const cook = useCookies()
     useEffect(
       ()=>{
-
-        setOption(options=>[...allOption])
+        if(getCookie('department') == 'engineering'){
+          setOption(options=>[...engineeringOption])
+        }
+        if(getCookie('department') == 'hostel'){
+          setOption(options=>[...hostelOption])
+        }
         
       },[]
     )
@@ -192,7 +186,7 @@ const page = () => {
         setLevel(4)
         break;
         default:
-          setHeight(20)
+          setHeight(50)
           break;
       }
     }
@@ -220,15 +214,7 @@ const page = () => {
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
         <form action="#" method="post" id="noticeForm">
-        <label>Choose Department :</label><br />
-          <select onChange={handleSelectButton} required>
-            <option value="" selected={true} disabled={true} hidden={true}>Choose Department</option>
-            <option value="all">All</option>
-            <option value="engineering">Engineering</option>
-            <option value="hostel">Hostel</option>
-          </select>
-          <br></br>
-          <br></br>
+          <label>Department : {cook.get('department')}</label>
           <div className={style.p}>
       <div className={style.ln1}>
         <div className={style.ln} style={{ height: height }}></div>
@@ -238,6 +224,9 @@ const page = () => {
         <input style={{"margin-bottom": "15px",
     "margin-right": "4px"}} type='radio' id='admin' value='admin' checked={true} disabled={true}/>
         <label>Admin</label><br/>
+        <input style={{"margin-bottom": "15px",
+    "margin-right": "4px"}} type='radio' id='dean' value='dean' checked={true} disabled={true}/>
+        <label>Dean</label><br/>
           {
           options.map(e=><>
             <input className={style.pad} type="radio" id={e.value} name="category" value={e.value} onChange={handleRadioButton} />

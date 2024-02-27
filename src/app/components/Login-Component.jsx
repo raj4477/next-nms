@@ -13,9 +13,12 @@ const Login_Component = () => {
   const router = useRouter()
   const cook = useCookies()
     let userEmail ;
-    if(hasCookie('email')){
-      window.location.href= '/admin'
-      // router.push('/admin')
+    // if(hasCookie('email')){
+    //   window.location.href= '/admin'
+    //   // router.push('/admin')
+    // }
+    if(hasCookie('mode')){
+      router.push(getCookie('mode'))
     }
     const handleSubmit = async () => {
       console.log(email);
@@ -52,23 +55,25 @@ const Login_Component = () => {
               expires : (1/(24*60*60)*150),
               secure:true
             })
-            console.log("-----");
-            console.log(getCookie('email'));
-            if(res.level == 0){
-              window.location.href = "/admin"
-            }
-            else if(res.level == 1){
-              window.location.href = "/dean"
-            }
-            else if(res.level == 2){
-              window.location.href = "/head"
-            }
-            else if(res.level == 3){
-              window.location.href = "/teacher"
-            }
-            else if(res.level == 4){
-              window.location.href = "/student"
-            }
+            const mp = [
+              "admin",
+              "dean",
+              "head",
+              "teacher",
+              "student"
+            ]
+            cook.set('mode',mp[res.level],{
+              expires : (1/(24*60*60)*150),
+              secure:true
+            })
+            cook.set('department',res.department,{
+              expires : (1/(24*60*60)*150),
+              secure:true
+            })
+            let path = '/' +getCookie('mode')
+            // window.location.href = "/admin"
+            router.push(path)
+            // router.push({pathname:path},undefined,{shallow : true})
             // redirectToAdmin()
           }
         });
@@ -86,9 +91,9 @@ const Login_Component = () => {
         src="/vercel.svg"
         alt="logo"
       />
-      Flowbite
+      <h1 className='text-5xl font-extrabold'>E-Suchana</h1><br></br>
   
-    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+    <div className="bg-transparent w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Sign in to your account

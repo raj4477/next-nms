@@ -2,36 +2,41 @@
 import React, { useEffect, useState } from 'react'
 import NavComponent from '../components/Nav-Component'
 import { getCookie } from 'cookies-next'
+import Script from 'next/script'
 
 
 const layout = ({children}) => {
   const [userLevel, setUserLevel] = useState(null)
-  useEffect(async ()=>{
-    if(!getCookie('token')){
+  const [first, setFirst] = useState(true)
+  const auth = async ()=> {
+    if (!getCookie('token')) {
       window.location.href = '/'
+
     }
     const response = await fetch('http://localhost:80/auth/authorize', {
-      method: 'GET',
+      method: 'POST',
       headers: {
-        'Authorization' : 'Bearer ' + getCookie('token')
+        'Authorization': 'Bearer ' + getCookie('token')
       },
-      body: JSON.stringify({
-        
-      }),
-    });
+      body: JSON.stringify({}),
+    })
     const result = await response.json()
     setUserLevel(result.level)
-    if(result.level != 0){
+    if (result.level != 0) {
       window.location.href = '/error'
     }
+  }
+  useEffect( ()=>{
+     auth()
+    setFirst(false)
   })
 
   return (<>
     {userLevel !=0 ? 
     
     <>
-      <div class="flex justify-center items-center h-screen w-screen">
-        <div class="loader border-5 border-solid border-gray-200 border-t-4 border-blue-500 rounded-full w-40 h-40 animate-spin"></div>
+      <div className="flex justify-center items-center h-screen w-screen">
+        <div className="loader border-5 border-solid border-gray-200 border-t-4 border-blue-500 rounded-full w-40 h-40 animate-spin"></div>
       </div>
 
 
@@ -41,13 +46,15 @@ const layout = ({children}) => {
     <body> */}
     <NavComponent suppressHydrationWarning={true}/>
     <>{children}</>
-    <script src='/flow.js'></script>
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <Script type="text/javascript" src="/flow.js" />
+    {/* <script src='/flow.js'></script>
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script> */}
     {/* </body>
     </html> */}
     </>
   
-  }
+}
+<Script type="text/javascript" src="/flow.js" />
   </>
   )
 }
