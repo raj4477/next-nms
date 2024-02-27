@@ -41,12 +41,34 @@ const Login_Component = () => {
             console.log(userEmail);
             // setCookie("email", userEmail, { maxAge: 60 * 2 });
             cook.set('email',userEmail,{
-              expires : (1/(24*60*60)*50),
+              expires : (1/(24*60*60)*150),
+              secure:true
+            })
+            cook.set('token',res.token,{
+              expires : (1/(24*60*60)*150),
+              secure:true
+            })
+            cook.set('username',res.name,{
+              expires : (1/(24*60*60)*150),
               secure:true
             })
             console.log("-----");
             console.log(getCookie('email'));
-            window.location.href = "/admin"
+            if(res.level == 0){
+              window.location.href = "/admin"
+            }
+            else if(res.level == 1){
+              window.location.href = "/dean"
+            }
+            else if(res.level == 2){
+              window.location.href = "/head"
+            }
+            else if(res.level == 3){
+              window.location.href = "/teacher"
+            }
+            else if(res.level == 4){
+              window.location.href = "/student"
+            }
             // redirectToAdmin()
           }
         });

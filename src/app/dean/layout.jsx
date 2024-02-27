@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import NavComponent from '../components/Nav-Component'
 import { getCookie } from 'cookies-next'
+import DeanNavComponent from '../components/Dean-Nav.component'
 
 
 const layout = ({children}) => {
@@ -27,7 +27,7 @@ const layout = ({children}) => {
   })
 
   return (<>
-    {userLevel !=0 ? 
+    {userLevel !=1 ? 
     
     <>
       <div class="flex justify-center items-center h-screen w-screen">
@@ -39,7 +39,7 @@ const layout = ({children}) => {
     <>
     {/* <html>
     <body> */}
-    <NavComponent suppressHydrationWarning={true}/>
+    <DeanNavComponent suppressHydrationWarning={true}/>
     <>{children}</>
     <script src='/flow.js'></script>
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
