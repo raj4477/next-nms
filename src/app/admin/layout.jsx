@@ -23,6 +23,7 @@ const Layout = ({children}) => {
       body: JSON.stringify({}),
     })
     const result = await response.json()
+    console.log(result);
     setUserLevel(result.level)
     alert(result.level)
     if (result.level != 0) {
