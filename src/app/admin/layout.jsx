@@ -18,7 +18,7 @@ const Layout = ({children}) => {
     const response = await fetch('https://e-suchana-backend.cyclic.app/auth/authorize', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer ' + getCookie('token')
+        'Authorization': 'Bearer ' + cook.get('token')
       },
       body: JSON.stringify({}),
     })
