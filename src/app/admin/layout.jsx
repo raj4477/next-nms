@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react'
 import NavComponent from '../components/Nav-Component'
 import { getCookie } from 'cookies-next'
 import Script from 'next/script'
+import { useCookies } from 'next-client-cookies'
 
 
 const Layout = ({children}) => {
   const [userLevel, setUserLevel] = useState(null)
   const [first, setFirst] = useState(true)
+  const cook = useCookies()
   const auth = async ()=> {
-    if (!getCookie('token')) {
+    if (!cook.get('token')) {
       window.location.href = '/'
 
     }
