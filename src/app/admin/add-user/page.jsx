@@ -87,7 +87,7 @@ const readExcel = (file) => {
       console.log("Info is Empty");
       return 
     }
-    let response = await fetch('http://localhost:80/api/register', {
+    let response = await fetch('https://e-suchana-backend.cyclic.app/api/register', {
       method: 'POST',
       headers: {
             'Accept': 'application/json, text/plain, */*',

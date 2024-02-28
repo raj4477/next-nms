@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     email : "ritik_11202584@mmumullana.org"
   }
 
-  // fetch(`http://localhost:80/api/fetchnotice/ritik_11202584@mmumullana.org`)
+  // fetch(`https://e-suchana-backend.cyclic.app/api/fetchnotice/ritik_11202584@mmumullana.org`)
   //     .then(response => response.json())
   //     .then(json => console.log(json))
 

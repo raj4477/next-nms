@@ -23,7 +23,7 @@ const Login_Component = () => {
     const handleSubmit = async () => {
       console.log(email);
       console.log(password);
-      fetch('http://localhost:80/api/login', {
+      fetch('https://e-suchana-backend.cyclic.app/api/login', {
       method: 'POST',
       headers: {
             'Accept': 'application/json, text/plain, */*',

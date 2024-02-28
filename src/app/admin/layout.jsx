@@ -13,7 +13,7 @@ const Layout = ({children}) => {
       window.location.href = '/'
 
     }
-    const response = await fetch('http://localhost:80/auth/authorize', {
+    const response = await fetch('https://e-suchana-backend.cyclic.app/auth/authorize', {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer ' + getCookie('token')

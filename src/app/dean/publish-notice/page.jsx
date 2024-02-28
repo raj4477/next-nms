@@ -81,7 +81,7 @@ const Page = () => {
     }
     async function publishNotice(){
       if(file == null){
-        let response = await fetch('http://localhost:80/notice/publish-notice-only', {
+        let response = await fetch('https://e-suchana-backend.cyclic.app/notice/publish-notice-only', {
       method: 'POST',
       headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -110,7 +110,7 @@ const Page = () => {
       formData.append("note", note);
       formData.append("department", department);
       formData.append('image',file);
-      const response = await fetch('http://localhost:80/notice/publish-notice', {
+      const response = await fetch('https://e-suchana-backend.cyclic.app/notice/publish-notice', {
         method: 'POST',
         headers: {
           'Authorization' : 'Bearer ' + getCookie('token')
@@ -122,7 +122,7 @@ const Page = () => {
       if(result.error){
         alert("Error" + result.error.message)
       }
-      // var response = await fetch('http://localhost:80/notice/publish-notice', {
+      // var response = await fetch('https://e-suchana-backend.cyclic.app/notice/publish-notice', {
       // method: 'POST',
       // headers: {
       //       'Accept': 'application/json, text/plain, */*',
@@ -148,7 +148,7 @@ const Page = () => {
       // formData.append("note", note);
       // formData.append("department", department);
       // formData.append('myNoticeImage',file);
-      // const response = await fetch('http://localhost/uploadPhoto', {
+      // const response = await fetch('https://e-suchana-backend.cyclic.app//uploadPhoto', {
       //   method: 'POST',
       //   body: formData,
       // });

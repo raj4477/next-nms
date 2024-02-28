@@ -8,7 +8,7 @@ const DataComponent = () => {
     const getNotice = async () => {
         let userEmail = getCookie('email')
         try {
-            const response = await fetch("http://localhost/api/fetchnotice/"+userEmail, {
+            const response = await fetch("https://e-suchana-backend.cyclic.app/api/fetchnotice/"+userEmail, {
                 method: 'GET',
                 headers: {
                   'Authorization': 'Bearer ' + getCookie('token')
@@ -56,7 +56,7 @@ const DataComponent = () => {
             </div>
             {data.image == null ? "" :
                 <div className={style.imagecontainer}>
-                    <img src={`http://localhost/${data.image}`} alt="Demo" className={style.image} />
+                    <img src={`https://e-suchana-backend.cyclic.app/${data.image}`} alt="Demo" className={style.image} />
                 </div>
             }
         </div>);
