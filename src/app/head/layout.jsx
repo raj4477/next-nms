@@ -6,7 +6,7 @@ import Script from 'next/script'
 
 
 
-const layout = ({children}) => {
+const Layout = ({children}) => {
   return (
     
       <>
@@ -24,4 +24,4 @@ const layout = ({children}) => {
   )
 }
 
-export default layout
+export default Layout

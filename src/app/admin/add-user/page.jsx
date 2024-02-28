@@ -147,7 +147,7 @@ const readExcel = (file) => {
       dark:bg-blue-600 
       dark:hover:bg-blue-700 
       dark:focus:ring-blue-800">ADD USER</button>
-<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+{/* <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script> */}
     </div>
   );
 }

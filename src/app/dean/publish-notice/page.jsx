@@ -45,7 +45,7 @@ const allOption = [
     value : "student"
   },
 ]
-const page = () => {
+const Page = () => {
     const [height, setHeight] = useState(50);
     const [note, setNote] = useState("");
     const [heading, setHeading] = useState("");
@@ -283,4 +283,4 @@ const page = () => {
   }
 }
 
-export default page
+export default Page

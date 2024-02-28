@@ -34,7 +34,7 @@ const Login_Component = () => {
         .then(res => {console.log(res)
           if(res.error){
             // console.log(res);
-            printRes(res)
+            // printRes(res)
             alert(res.error)
             // window.location.href = '/error'
           }

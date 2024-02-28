@@ -5,7 +5,7 @@ import { getCookie } from 'cookies-next'
 import Script from 'next/script'
 
 
-const layout = ({children}) => {
+const Layout = ({children}) => {
   const [userLevel, setUserLevel] = useState(null)
   const [first, setFirst] = useState(true)
   const auth = async ()=> {
@@ -59,4 +59,4 @@ const layout = ({children}) => {
   )
 }
 
-export default layout
+export default Layout

@@ -5,7 +5,7 @@ import DeanNavComponent from '../components/Dean-Nav.component'
 import Script from 'next/script'
 
 
-const layout = ({children}) => {
+const Layout = ({children}) => {
   const [userLevel, setUserLevel] = useState(null)
   const auth = async ()=> {
     if (!getCookie('token')) {
@@ -57,4 +57,4 @@ const layout = ({children}) => {
   )
 }
 
-export default layout
+export default Layout

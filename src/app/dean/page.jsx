@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
-function page() {
+function Page() {
   return (
    <>
 
@@ -21,4 +21,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

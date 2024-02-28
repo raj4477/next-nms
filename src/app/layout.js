@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       </CookiesProvider>
       
       {/* <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script> */}
-      <script src='/flow.js'></script>
+      {/* <script src='/flow.js'></script> */}
       </body>
     </html>
   );

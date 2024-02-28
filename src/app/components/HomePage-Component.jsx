@@ -8,11 +8,9 @@ const HomePage_Component = () => {
   if (hasCookie('mode')) {
     let pth = '/' + getCookie('mode')
     router.push(pth)
-    // window.location.href = '/admin'
   }
   else {
     router.push('/login')
-    // window.location.href = '/login'
   }
   return (
     <>
