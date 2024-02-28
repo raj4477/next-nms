@@ -25,7 +25,6 @@ const Layout = ({children}) => {
     const result = await response.json()
     console.log(result);
     setUserLevel(result.level)
-    alert(result.level)
     if (result.level != 0) {
       window.location.href = '/error'
     }
