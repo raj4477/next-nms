@@ -97,7 +97,7 @@ const Page = () => {
       const message = await response.json();
       if(message.success){
         alert("Successfully Added")
-        window.location.href="/admin"
+        window.location.href="/dean"
       }
       else if(message.error){
         alert(message.error)

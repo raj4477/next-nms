@@ -1,16 +1,26 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { getCookie } from 'cookies-next'
-import DeanNavComponent from '../components/Dean-Nav.component'
 import Script from 'next/script'
 import Head from 'next/head'
+import StudentNavComponent from '../components/Student-Nav.component'
 
 
 const Layout = ({children}) => {
   const [userLevel, setUserLevel] = useState(null)
+  useEffect( ()=>{
+    auth()
+
+ },[])
+  if (!getCookie('token')) {
+    router.push('/login', undefined, { shallow: true }); 
+    return
+  }
   const auth = async ()=> {
     if (!getCookie('token')) {
-      window.location.href = '/'
+      router.push('/login', undefined, { shallow: true }); 
+      return
+      // window.location.href = '/'
 
     }
     const response = await fetch('https://e-suchana-backend.cyclic.app/auth/authorize', {
@@ -22,20 +32,17 @@ const Layout = ({children}) => {
     })
     const result = await response.json()
     setUserLevel(result.level)
-    // alert(result.level)
-    if (result.level !== 1) {
-      window.location.href = '/error'
+    if (result.level !== 4) {
+      // window.location.href = '/error'
+      router.push('/', undefined, { shallow: true }); 
     }
   }
-  useEffect( ()=>{
-     auth()
-
-  })
+  
   return (<>
-  <Head >
+<Head >
   </Head>
   <Script type="text/javascript" src="/static/flow.js" />
-    {userLevel !=1 ? 
+    {userLevel !=4 ? 
     
     <>
       <div class="flex justify-center items-center h-screen w-screen">
@@ -47,7 +54,7 @@ const Layout = ({children}) => {
     <>
     {/* <html>
     <body> */}
-    <DeanNavComponent suppressHydrationWarning={true}/>
+    <StudentNavComponent suppressHydrationWarning={true}/>
     <>{children}</>
     <Script type="text/javascript" src="/flow.js" />
     {/* <script src='/flow.js'></script>

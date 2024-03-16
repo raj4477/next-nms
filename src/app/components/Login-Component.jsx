@@ -10,6 +10,7 @@ import { useCookies } from 'next-client-cookies';
 const Login_Component = () => {
   const [email , setEmail] = useState('')
   const [password , setPassword] = useState('')
+  const [show , setShow] = useState(false)
   const router = useRouter()
   const cook = useCookies()
     let userEmail ;
@@ -44,15 +45,15 @@ const Login_Component = () => {
             console.log(userEmail);
             // setCookie("email", userEmail, { maxAge: 60 * 2 });
             cook.set('email',userEmail,{
-              expires : (1/(24*60*60)*150),
+              expires : (1/(24*60*60)*1500),
               secure:true
             })
             cook.set('token',res.token,{
-              expires : (1/(24*60*60)*150),
+              expires : (1/(24*60*60)*1500),
               secure:true
             })
             cook.set('username',res.name,{
-              expires : (1/(24*60*60)*150),
+              expires : (1/(24*60*60)*1500),
               secure:true
             })
             const mp = [
@@ -63,11 +64,11 @@ const Login_Component = () => {
               "student"
             ]
             cook.set('mode',mp[res.level],{
-              expires : (1/(24*60*60)*150),
+              expires : (1/(24*60*60)*1500),
               secure:true
             })
             cook.set('department',res.department,{
-              expires : (1/(24*60*60)*150),
+              expires : (1/(24*60*60)*1500),
               secure:true
             })
             let path = '/' +getCookie('mode')
@@ -124,7 +125,7 @@ const Login_Component = () => {
               Password
             </label>
             <input
-              type="password"
+              type={show?"text":"password"}
               name="password"
               id="password"
               placeholder="••••••••"
@@ -142,6 +143,7 @@ const Login_Component = () => {
                   type="checkbox"
                   className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
                   required=""
+                  onClick={()=>{setShow(!show)}}
                 />
               </div>
               <div className="ml-3 text-sm">
@@ -149,7 +151,7 @@ const Login_Component = () => {
                   htmlFor="remember"
                   className="text-gray-500 dark:text-gray-300"
                 >
-                  Remember me
+                  Show Password
                 </label>
               </div>
             </div>

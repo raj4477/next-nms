@@ -4,6 +4,7 @@ import NavComponent from '../components/Nav-Component'
 import { getCookie } from 'cookies-next'
 import Script from 'next/script'
 import { useCookies } from 'next-client-cookies'
+import Head from 'next/head'
 
 
 const Layout = ({children}) => {
@@ -26,7 +27,7 @@ const Layout = ({children}) => {
     console.log(result);
     setUserLevel(result.level)
     if (result.level != 0) {
-      window.location.href = '/error'
+      window.location.href = '/'
     }
   }
   useEffect( ()=>{
@@ -35,6 +36,9 @@ const Layout = ({children}) => {
   })
 
   return (<>
+  <Head >
+  </Head>
+  <Script type="text/javascript" src="/static/flow.js" />
     {userLevel !=0 ? 
     
     <>
@@ -57,7 +61,7 @@ const Layout = ({children}) => {
     </>
   
 }
-<Script type="text/javascript" src="/flow.js" />
+<Script type="text/javascript" src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js" />
   </>
   )
 }

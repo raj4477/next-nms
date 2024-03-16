@@ -7,10 +7,12 @@ const HomePage_Component = () => {
   const router = useRouter()
   if (hasCookie('mode')) {
     let pth = '/' + getCookie('mode')
-    router.push(pth)
+    router.push(pth, undefined, { shallow: true }); 
   }
   else {
-    router.push('/login')
+    // router.push('/login')
+    router.push('/login', undefined, { shallow: true });    // window.location.href = '/'
+
   }
   return (
     <>

@@ -101,7 +101,8 @@ const readExcel = (file) => {
         window.location.href="/admin/add-user"
       }
       else if(message.error){
-        alert("Error occured")
+        alert("Error occured" + message.error)
+        window.location.href="/admin/add-user"
       }
   }
   return (

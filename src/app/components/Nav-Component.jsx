@@ -14,7 +14,7 @@ function NavComponent() {
   
   return (
     <>
-    {/* <script src='/flow.js'></script> */}
+    
          <div>
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -193,7 +193,7 @@ function NavComponent() {
         </li>
          <li>
           <Link
-            href="/admin/sign-out"
+            href="/sign-out"
             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
           >
             <svg
@@ -214,7 +214,7 @@ function NavComponent() {
     </div>
   </aside>
     </div>
-
+    {/* <script src='/flow.js'></script> */}
        </>  )
 }
 
