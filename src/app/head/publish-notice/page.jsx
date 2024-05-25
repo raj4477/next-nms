@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import * as style from "./style.module.css"
 import { getCookie } from 'cookies-next'
+import link from '../../../../backendlink'
 const engineeringOption = [
   {
     label : "Principals",
@@ -87,7 +88,7 @@ const Page = () => {
     }
     async function publishNotice(){
       if(file == null){
-        let response = await fetch('https://e-suchana-backend.cyclic.app/notice/publish-notice-only', {
+        let response = await fetch(link+'notice/publish-notice-only', {
       method: 'POST',
       headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -116,7 +117,7 @@ const Page = () => {
       formData.append("note", note);
       formData.append("department", department);
       formData.append('image',file);
-      const response = await fetch('https://e-suchana-backend.cyclic.app/notice/publish-notice', {
+      const response = await fetch(link+'notice/publish-notice', {
         method: 'POST',
         headers: {
           'Authorization' : 'Bearer ' + getCookie('token')

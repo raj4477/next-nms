@@ -4,6 +4,7 @@ import * as style from './style.module.css'
 import { getCookie } from 'cookies-next';
 import Image from 'next/image';
 import Script from 'next/script';
+import link from '../../../../backendlink';
 
 const MAGNIFIER_SIZE = 200;
 const ZOOM_LEVEL = 2.5;
@@ -13,7 +14,7 @@ const DataComponent = () => {
     let userEmail = getCookie('email')
     const getNotice = async () => {
         try {
-            const response = await fetch("https://e-suchana-backend.cyclic.app/api/fetchnotice/" + userEmail, {
+            const response = await fetch(link+"api/fetchnotice/" + userEmail, {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + getCookie('token')
