@@ -5,6 +5,7 @@ import { getCookie } from 'cookies-next'
 import Script from 'next/script'
 import { useCookies } from 'next-client-cookies'
 import Head from 'next/head'
+import link from '../../../backendlink'
 
 
 const Layout = ({children}) => {
@@ -16,7 +17,7 @@ const Layout = ({children}) => {
       window.location.href = '/'
 
     }
-    const response = await fetch('https://e-suchana-backend.cyclic.app/auth/authorize', {
+    const response = await fetch(link+'auth/authorize', {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer ' + cook.get('token')

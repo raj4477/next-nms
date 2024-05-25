@@ -21,6 +21,7 @@ import Table from 'react-bootstrap/Table';
 import { Col, Form, Row } from 'react-bootstrap';
 import { printRes } from "@/app/actions/redirectToAdmin";
 import Table_Compenent from "@/app/components/Table-Component";
+import link from "../../../../backendlink";
 
 export default function MyNextJsExcelSheet() {
 
@@ -29,6 +30,7 @@ const [info, setInfo] = useState([]);
 
 let infoHelper = []
 let d =[];
+const linkk = link;
 // useEffect(()=>{
 //   console.log("useEffect-->");
 //   console.log(d);
@@ -87,7 +89,7 @@ const readExcel = (file) => {
       console.log("Info is Empty");
       return 
     }
-    let response = await fetch('https://e-suchana-backend.cyclic.app/api/register', {
+    let response = await fetch(linkk+'api/register', {
       method: 'POST',
       headers: {
             'Accept': 'application/json, text/plain, */*',
