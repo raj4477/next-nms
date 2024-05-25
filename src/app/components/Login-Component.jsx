@@ -5,6 +5,7 @@ import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { useRouter } from 'next/navigation';
 import { printRes, redirectToAdmin } from '../actions/redirectToAdmin';
 import { useCookies } from 'next-client-cookies';
+import link from '../../../backendlink';
 
 
 const Login_Component = () => {
@@ -27,7 +28,8 @@ const Login_Component = () => {
     setApiCheck(true);
     console.log(email);
     console.log(password);
-    fetch('https://e-suchana-backend.cyclic.app/api/login', {
+    const linkk = link;
+    fetch(linkk+'api/login', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
